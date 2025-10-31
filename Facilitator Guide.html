@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Emergency Field Hospital Site Planning Exercise – Facilitator Guide for training use">
+  <title>Emergency Field Hospital Site Planning Exercise – Facilitator Guide</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    :root {
+      --primary: #2563eb;
+      --primary-dark: #1e40af;
+      --primary-light: #3b82f6;
+      --secondary: #10b981;
+      --accent: #f59e0b;
+      --text: #1f2937;
+      --text-light: #6b7280;
+      --bg-primary: #ffffff;
+      --bg-secondary: #f9fafb;
+      --bg-tertiary: #f3f4f6;
+      --border: #e5e7eb;
+      --border-light: #f3f4f6;
+      --success: #10b981;
+      --warning: #f59e0b;
+      --danger: #ef4444;
+      --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+      --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+      --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+      --radius-sm: 0.375rem;
+      --radius-md: 0.5rem;
+      --radius-lg: 0.75rem;
+      --radius-xl: 1rem;
+      --spacing-xs: 0.5rem;
+      --spacing-sm: 1rem;
+      --spacing-md: 1.5rem;
+      --spacing-lg: 2rem;
+      --spacing-xl: 3rem;
+    }
+    
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+      line-height: 1.7;
+      color: var(--text);
+      background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+      min-height: 100vh;
+      padding: var(--spacing-md);
+    }
+    
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      background: var(--bg-primary);
+      padding: var(--spacing-xl);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-xl);
+    }
+    
+    header {
+      text-align: center;
+      margin-bottom: var(--spacing-xl);
+      padding-bottom: var(--spacing-lg);
+      border-bottom: 3px solid var(--primary);
+      position: relative;
+    }
+    
+    header::after {
+      content: '';
+      position: absolute;
+      bottom: -3px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100px;
+      height: 3px;
+      background: var(--accent);
+    }
+    
+    h1 {
+      color: var(--primary);
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: var(--spacing-xs);
+      letter-spacing: -0.02em;
+    }
+    
+    .subtitle {
+      font-style: italic;
+      color: var(--text-light);
+      font-size: 1.125rem;
+      margin-top: var(--spacing-xs);
+    }
+    
+    h2 {
+      color: var(--primary);
+      font-size: 1.75rem;
+      font-weight: 600;
+      margin-top: var(--spacing-xl);
+      margin-bottom: var(--spacing-md);
+      padding-bottom: var(--spacing-xs);
+      border-bottom: 2px solid var(--border);
+    }
+    
+    h3 {
+      color: var(--primary-dark);
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-top: var(--spacing-md);
+      margin-bottom: var(--spacing-sm);
+    }
+    
+    .section {
+      margin-bottom: var(--spacing-xl);
+    }
+    
+    ul, ol {
+      padding-left: var(--spacing-lg);
+      margin: var(--spacing-sm) 0;
+    }
+    
+    li {
+      margin: var(--spacing-xs) 0;
+    }
+    
+    .scenario-card {
+      background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 100%);
+      padding: var(--spacing-md);
+      border-left: 4px solid var(--primary);
+      margin: var(--spacing-md) 0;
+      border-radius: var(--radius-md);
+      font-size: 1rem;
+      box-shadow: var(--shadow-md);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    
+    .scenario-card:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-lg);
+    }
+    
+    .scenario-card strong {
+      color: var(--primary-dark);
+      font-size: 1.125rem;
+      display: block;
+      margin-bottom: var(--spacing-xs);
+    }
+    
+    .diagram {
+      text-align: center;
+      margin: var(--spacing-lg) 0;
+      border: 2px solid var(--border);
+      padding: var(--spacing-md);
+      background: var(--bg-secondary);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-md);
+    }
+    
+    .diagram svg {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+    
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: var(--spacing-md) 0;
+      font-size: 1rem;
+      background: var(--bg-primary);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-md);
+    }
+    
+    th, td {
+      padding: var(--spacing-md);
+      text-align: left;
+      border-bottom: 1px solid var(--border-light);
+    }
+    
+    th {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+      color: white;
+      font-weight: 600;
+      text-transform: uppercase;
+      font-size: 0.875rem;
+      letter-spacing: 0.05em;
+    }
+    
+    tr:hover {
+      background-color: var(--bg-secondary);
+    }
+    
+    tr:last-child td {
+      border-bottom: none;
+    }
+    
+    .layout-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--spacing-xl);
+      margin-top: var(--spacing-lg);
+    }
+    
+    @media (min-width: 1600px) {
+      .layout-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+    
+    .layout-item {
+      background: var(--bg-secondary);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-lg);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border: 2px solid var(--border);
+    }
+    
+    .layout-item:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-xl);
+      border-color: var(--primary);
+    }
+    
+    .layout-item img {
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: contain;
+      background: var(--bg-tertiary);
+      min-height: 400px;
+      padding: var(--spacing-md);
+    }
+    
+    .layout-label {
+      padding: var(--spacing-md);
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+      color: white;
+      font-weight: 600;
+      text-align: center;
+      font-size: 1.125rem;
+      letter-spacing: 0.05em;
+    }
+    
+    .footer {
+      font-size: 0.875rem;
+      color: var(--text-light);
+      text-align: center;
+      margin-top: var(--spacing-xl);
+      padding-top: var(--spacing-lg);
+      border-top: 2px solid var(--border);
+    }
+    
+    @media (max-width: 768px) {
+      body {
+        padding: var(--spacing-sm);
+      }
+      
+      .container {
+        padding: var(--spacing-md);
+      }
+      
+      h1 {
+        font-size: 2rem;
+      }
+      
+      h2 {
+        font-size: 1.5rem;
+      }
+      
+      .layout-grid {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-md);
+      }
+      
+      table {
+        font-size: 0.875rem;
+      }
+      
+      th, td {
+        padding: var(--spacing-sm);
+      }
+    }
+    
+    @media (max-width: 480px) {
+      h1 {
+        font-size: 1.75rem;
+      }
+      
+      .layout-grid {
+        gap: var(--spacing-sm);
+      }
+    }
+    
+    @media print {
+      body {
+        background: white;
+        padding: 0;
+      }
+      
+      .container {
+        box-shadow: none;
+        padding: var(--spacing-md);
+      }
+      
+      .layout-item:hover {
+        transform: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Emergency Field Hospital Site Planning Exercise</h1>
+      <p class="subtitle">Facilitator Guide – 45-Minute</p>
+    </header>
+
+    <!-- EXERCISE OVERVIEW -->
+    <div class="section">
+      <h2>Exercise Overview</h2>
+      <table>
+        <tr><th>Exercise Name</th><td>Field Hospital Site Planning Exercise</td></tr>
+        <tr><th>Duration</th><td>45 minutes</td></tr>
+        <tr><th>Mission Areas</th><td>Response, Protection</td></tr>
+        <tr><th>Core Capabilities</th><td>Healthcare Delivery, Logistics, Planning</td></tr>
+        <tr><th>Threat/Hazard</th><td>All-hazards (earthquake, flood, volcanic eruption)</td></tr>
+      </table>
+    </div>
+
+    <!-- OBJECTIVES -->
+    <div class="section">
+      <h2>Objectives</h2>
+      <ol>
+        <li>Design a compliant 2D site layout for an emergency field hospital based on a selected scenario (Type 1, 2, or 3).</li>
+        <li>Apply minimum technical standards for functional zones, WASH, and safety buffers.</li>
+        <li>Integrate essential services: command, reproductive health, and mental health (MHPSS) where required.</li>
+      </ol>
+    </div>
+
+    <!-- SITE PLANNING REQUIREMENTS -->
+    <div class="section">
+      <h2>Site Planning Requirements</h2>
+      <p>All layouts must include:</p>
+      <ol>
+        <li>Site boundary with dimensions</li>
+        <li>Six functional zones: Clinical, Support, Logistics, Administration, Staff, Security</li>
+        <li>Patient entry point (front)</li>
+        <li>Ambulance bay</li>
+        <li>Clinical tents with bed capacity</li>
+        <li>Water tank (15) + purifier (14)</li>
+        <li>Sanitation ≥30m from water</li>
+        <li>Medical waste ≥500m from population</li>
+        <li>Utility corridors</li>
+        <li>Staff accommodation with separate WASH</li>
+        <li>Emergency exits</li>
+        <li>Parking/loading area</li>
+        <li>Security perimeter with flag (19)</li>
+      </ol>
+    </div>
+
+    <!-- FUNCTIONAL ZONES -->
+    <div class="section">
+      <h2>Functional Zones & Tent Types</h2>
+      <table>
+        <tr><th>Code</th><th>Function</th></tr>
+        <tr><td>1</td><td>Command & Admin</td></tr>
+        <tr><td>2</td><td>Male Inpatient</td></tr>
+        <tr><td>3</td><td>Female Inpatient</td></tr>
+        <tr><td>4</td><td>Outpatient (OPD) + Repro Health</td></tr>
+        <tr><td>5</td><td>ICU</td></tr>
+        <tr><td>6</td><td>Emergency (UGD)</td></tr>
+        <tr><td>7</td><td>Staff Accommodation</td></tr>
+        <tr><td>8</td><td>Operating Room</td></tr>
+        <tr><td>9</td><td>CSSD</td></tr>
+        <tr><td>10</td><td>Pharmacy</td></tr>
+        <tr><td>11</td><td>Staff Toilets</td></tr>
+        <tr><td>12</td><td>X-Ray</td></tr>
+        <tr><td>13</td><td>Patient Toilets/WC</td></tr>
+        <tr><td>14</td><td>Water Purifier</td></tr>
+        <tr><td>15</td><td>Main Water Tank</td></tr>
+        <tr><td>16</td><td>Kitchen</td></tr>
+        <tr><td>17</td><td>Logistics Warehouse</td></tr>
+        <tr><td>18</td><td>Generator (Genset)</td></tr>
+        <tr><td>19</td><td>Security/Flag</td></tr>
+        <tr><td>—</td><td>MHPSS Unit (Type 2/3)</td></tr>
+      </table>
+    </div>
+
+    <!-- REFERENCE LAYOUTS -->
+    <div class="section">
+      <h2>Reference Layouts</h2>
+
+      <div class="scenario-card">
+        <strong>Scenario A → Type 1 (20–50 beds)</strong><br>
+        Remote earthquake, 80m × 60m, fully tented.
+      </div>
+      <div class="diagram">
+        <svg viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg" style="background:#f0f8ff">
+          <rect x="30" y="30" width="540" height="340" fill="none" stroke="#000"/>
+          <rect x="200" y="40" width="80" height="50" fill="#ffcdd2" stroke="#b71c1c"/><text x="205" y="60" font-size="10">6. UGD</text>
+          <rect x="100" y="40" width="80" height="50" fill="#c8e6c9" stroke="#2e7d32"/><text x="105" y="60" font-size="10">4. OPD</text>
+          <rect x="400" y="40" width="80" height="50" fill="#bbdefb" stroke="#0d47a1"/><text x="405" y="60" font-size="10">1. Command</text>
+          <rect x="80" y="150" width="100" height="60" fill="#e1bee7" stroke="#4a148c"/><text x="85" y="170" font-size="10">2/3. Obs</text>
+          <rect x="80" y="250" width="50" height="50" fill="#a1887f" stroke="#3e2723"/><text x="85" y="270" font-size="10">13. WC</text>
+          <rect x="200" y="250" width="80" height="50" fill="#d1c4e9" stroke="#512da8"/><text x="205" y="270" font-size="10">7. Staff</text>
+          <rect x="300" y="250" width="40" height="30" fill="#a1887f" stroke="#3e2723"/><text x="305" y="265" font-size="9">Staff WC</text>
+          <circle cx="450" cy="200" r="15" fill="#90caf9" stroke="#0d47a1"/><text x="435" y="205" font-size="10">15. Tank</text>
+          <rect x="430" y="240" width="40" height="25" fill="#80deea" stroke="#006064"/><text x="435" y="258" font-size="10">14. Purifier</text>
+          <rect x="450" y="300" width="50" height="30" fill="#bdbdbd" stroke="#212121"/><text x="455" y="320" font-size="10">18. Genset</text>
+          <rect x="350" y="300" width="60" height="30" fill="#d7ccc8" stroke="#4e342e"/><text x="355" y="320" font-size="10">17. Gudang</text>
+        </svg>
+      </div>
+
+      <div class="scenario-card">
+        <strong>Scenario B → Type 2 (50–100 beds)</strong><br>
+        Urban flood + cholera, 120m × 100m, hybrid.
+      </div>
+      <div class="diagram">
+        <svg viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg" style="background:#f0f8ff">
+          <rect x="30" y="30" width="540" height="340" fill="none" stroke="#000"/>
+          <rect x="400" y="40" width="80" height="50" fill="#bbdefb" stroke="#0d47a1"/><text x="405" y="60" font-size="10">1. Command</text>
+          <rect x="250" y="40" width="100" height="60" fill="#ffcdd2" stroke="#b71c1c"/><text x="255" y="60" font-size="10">6. UGD</text>
+          <rect x="120" y="40" width="100" height="60" fill="#c8e6c9" stroke="#2e7d32"/><text x="125" y="60" font-size="10">4. OPD</text>
+          <rect x="100" y="150" width="120" height="80" fill="#e1bee7" stroke="#4a148c"/><text x="105" y="170" font-size="10">2/3. Wards</text>
+          <rect x="250" y="150" width="80" height="60" fill="#ffab91" stroke="#e64a19"/><text x="255" y="170" font-size="10">5. ICU</text>
+          <rect x="250" y="230" width="80" height="60" fill="#ffccbc" stroke="#bf360c"/><text x="255" y="250" font-size="10">8. OR</text>
+          <rect x="100" y="270" width="60" height="60" fill="#a1887f" stroke="#3e2723"/><text x="105" y="290" font-size="10">13. WC</text>
+          <rect x="250" y="290" width="100" height="60" fill="#d1c4e9" stroke="#512da8"/><text x="255" y="310" font-size="10">7. Staff</text>
+          <rect x="370" y="290" width="50" height="40" fill="#a1887f" stroke="#3e2723"/><text x="375" y="305" font-size="9">Staff WC</text>
+          <circle cx="480" cy="200" r="18" fill="#90caf9" stroke="#0d47a1"/><text x="465" y="205" font-size="10">15. Tank</text>
+          <rect x="460" y="240" width="40" height="30" fill="#80deea" stroke="#006064"/><text x="465" y="260" font-size="10">14. Purifier</text>
+          <rect x="380" y="350" width="60" height="30" fill="#bdbdbd" stroke="#212121"/><text x="385" y="370" font-size="10">18. Genset</text>
+          <rect x="480" y="290" width="80" height="60" fill="#ce93d8" stroke="#7b1fa2"/><text x="485" y="310" font-size="10">MHPSS</text>
+        </svg>
+      </div>
+
+      <div class="scenario-card">
+        <strong>Scenario C → Type 3 (100–200+ beds)</strong><br>
+        Volcanic eruption, 150m × 120m, hybrid + isolation.
+      </div>
+      <div class="diagram">
+        <svg viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg" style="background:#f0f8ff">
+          <rect x="30" y="30" width="540" height="340" fill="none" stroke="#000"/>
+          <rect x="80" y="100" width="150" height="200" fill="#eeeeee" stroke="#616161" stroke-dasharray="3,3"/>
+          <text x="85" y="120" font-size="10">Building: Wards, Pharm, Command</text>
+          <rect x="260" y="60" width="100" height="60" fill="#ffcdd2" stroke="#b71c1c"/><text x="265" y="80" font-size="10">6. UGD</text>
+          <rect x="260" y="140" width="80" height="60" fill="#ffccbc" stroke="#bf360c"/><text x="265" y="160" font-size="10">8. OR</text>
+          <rect x="260" y="220" width="80" height="50" fill="#ffab91" stroke="#e64a19"/><text x="265" y="240" font-size="10">5. ICU</text>
+          <rect x="360" y="140" width="80" height="60" fill="#ce93d8" stroke="#7b1fa2"/><text x="365" y="160" font-size="10">MHPSS</text>
+          <rect x="100" y="320" width="80" height="50" fill="#f44336" opacity="0.3" stroke="#d32f2f"/><text x="105" y="340" font-size="10">Isolation</text>
+          <rect x="200" y="320" width="70" height="50" fill="#a1887f" stroke="#3e2723"/><text x="205" y="340" font-size="10">13. WC</text>
+          <rect x="300" y="320" width="100" height="50" fill="#d1c4e9" stroke="#512da8"/><text x="305" y="340" font-size="10">7. Staff</text>
+          <rect x="420" y="320" width="50" height="40" fill="#a1887f" stroke="#3e2723"/><text x="425" y="335" font-size="9">Staff WC</text>
+          <circle cx="480" cy="200" r="20" fill="#90caf9" stroke="#0d47a1"/><text x="465" y="205" font-size="10">15. Tank</text>
+          <rect x="460" y="240" width="40" height="30" fill="#80deea" stroke="#006064"/><text x="465" y="260" font-size="10">14. Purifier</text>
+          <rect x="480" y="320" width="60" height="40" fill="#bdbdbd" stroke="#212121"/><text x="485" y="340" font-size="10">18. Genset</text>
+        </svg>
+      </div>
+    </div>
+
+    <!-- EXERCISE STRUCTURE -->
+    <div class="section">
+      <h2>Exercise Structure (45 Minutes Total)</h2>
+      <ul>
+        <li><strong>0–10 min:</strong> Introduce scenarios; teams select one (A, B, or C)</li>
+        <li><strong>10–35 min:</strong> Teams draft 2D layout using grid paper or whiteboard</li>
+        <li><strong>35–45 min:</strong> Quick team share + facilitator-led discussion using hotwash questions</li>
+      </ul>
+    </div>
+
+    <!-- DISCUSSION QUESTIONS -->
+    <div class="section">
+      <h2>Discussion Questions</h2>
+      <ol>
+        <li>Is Command/Admin (Tenda 1) included?</li>
+        <li>Are patient and staff WASH facilities separated and ≥30m from water?</li>
+        <li>Is reproductive health integrated (Type 2/3)?</li>
+        <li>Is MHPSS included for Type 2/3?</li>
+        <li>Are medical waste and genset placed safely?</li>
+      </ol>
+    </div>
+
+    <!-- APPENDIX -->
+    <div class="section">
+      <h2>Appendix 1: Example Layouts from Other References</h2>
+      <p><em>Reference layouts for field hospital site planning:</em></p>
+      <div class="layout-grid">
+        <div class="layout-item">
+          <div class="layout-label">Layout 1</div>
+          <img src="Layout 1.png" alt="Field Hospital Layout 1 - Emergency Site Planning Reference" loading="lazy">
+        </div>
+        <div class="layout-item">
+          <div class="layout-label">Layout 2</div>
+          <img src="Layout 2.png" alt="Field Hospital Layout 2 - Emergency Site Planning Reference" loading="lazy">
+        </div>
+        <div class="layout-item">
+          <div class="layout-label">Layout 3</div>
+          <img src="Layout 3.png" alt="Field Hospital Layout 3 - Emergency Site Planning Reference" loading="lazy">
+        </div>
+        <div class="layout-item">
+          <div class="layout-label">Layout 4</div>
+          <img src="Layout 4.png" alt="Field Hospital Layout 4 - Emergency Site Planning Reference" loading="lazy">
+        </div>
+        <div class="layout-item">
+          <div class="layout-label">Layout 5</div>
+          <img src="Layout 5.png" alt="Field Hospital Layout 5 - Emergency Site Planning Reference" loading="lazy">
+        </div>
+        <div class="layout-item">
+          <div class="layout-label">Layout 6</div>
+          <img src="Layout 6.png" alt="Field Hospital Layout 6 - Emergency Site Planning Reference" loading="lazy">
+        </div>
+      </div>
+    </div>
+
+    <div class="footer">
+      <p>Emergency Field Hospital Site Planning Exercise – Facilitator Guide<br>
+      <br>
+      FOR TRAINING USE ONLY</p>
+    </div>
+  </div>
+</body>
+</html>
