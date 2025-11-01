@@ -149,6 +149,119 @@
       margin-bottom: var(--spacing-xs);
     }
     
+    /* Detailed Scenario Cards */
+    .scenario-detailed-card {
+      background: var(--bg-primary);
+      border-radius: var(--radius-lg);
+      padding: var(--spacing-lg);
+      margin: var(--spacing-lg) 0;
+      box-shadow: var(--shadow-md);
+      border-left: 5px solid;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    
+    .scenario-detailed-card:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-lg);
+    }
+    
+    .scenario-a {
+      border-left-color: #3b82f6;
+      background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+    }
+    
+    .scenario-b {
+      border-left-color: #10b981;
+      background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%);
+    }
+    
+    .scenario-c {
+      border-left-color: #f59e0b;
+      background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%);
+    }
+    
+    .scenario-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: var(--spacing-md);
+      gap: var(--spacing-md);
+      flex-wrap: wrap;
+    }
+    
+    .scenario-header h3 {
+      margin: 0;
+      color: var(--primary-dark);
+      font-size: 1.5rem;
+      flex: 1;
+      min-width: 200px;
+    }
+    
+    .hospital-type-badge {
+      display: inline-block;
+      padding: var(--spacing-xs) var(--spacing-md);
+      border-radius: var(--radius-md);
+      font-weight: 700;
+      font-size: 0.875rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      white-space: nowrap;
+    }
+    
+    .hospital-type-badge.type-1 {
+      background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+      color: white;
+    }
+    
+    .hospital-type-badge.type-2 {
+      background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+      color: white;
+    }
+    
+    .hospital-type-badge.type-3 {
+      background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+      color: white;
+    }
+    
+    .scenario-content {
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-md);
+    }
+    
+    .scenario-detail-row {
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-xs);
+    }
+    
+    .scenario-detail-row strong {
+      color: var(--text);
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: var(--spacing-xs);
+    }
+    
+    .scenario-detail-row p {
+      margin: 0;
+      color: var(--text);
+      line-height: 1.6;
+    }
+    
+    @media (max-width: 768px) {
+      .scenario-header {
+        flex-direction: column;
+      }
+      
+      .scenario-header h3 {
+        font-size: 1.25rem;
+      }
+      
+      .hospital-type-badge {
+        align-self: flex-start;
+      }
+    }
+    
     .diagram {
       text-align: center;
       margin: var(--spacing-lg) 0;
@@ -514,6 +627,74 @@
         <li>Apply minimum technical standards for functional zones, WASH, and safety buffers.</li>
         <li>Integrate essential services: command, reproductive health, and mental health (MHPSS) where required.</li>
       </ol>
+    </div>
+
+    <!-- SCENARIOS & HOSPITAL TYPES -->
+    <div class="section">
+      <h2>Scenarios & Hospital Types</h2>
+      
+      <div class="scenario-detailed-card scenario-a">
+        <div class="scenario-header">
+          <h3>Scenario A: Remote Earthquake (Type 1 – Small)</h3>
+          <span class="hospital-type-badge type-1">Type 1 (20–50 beds)</span>
+        </div>
+        <div class="scenario-content">
+          <div class="scenario-detail-row">
+            <strong>Context:</strong>
+            <p>7.0-magnitude quake in mountainous region. Roads damaged. No electricity or buildings.</p>
+          </div>
+          <div class="scenario-detail-row">
+            <strong>Focus:</strong>
+            <p>Outpatient care, wound management, maternal check-ups, chronic disease refills.</p>
+          </div>
+          <div class="scenario-detail-row">
+            <strong>Site:</strong>
+            <p>Flat clearing (80m × 60m). Fully tented.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="scenario-detailed-card scenario-b">
+        <div class="scenario-header">
+          <h3>Scenario B: Urban Flood + Cholera Outbreak (Type 2 – Medium)</h3>
+          <span class="hospital-type-badge type-2">Type 2 (50–100 beds)</span>
+        </div>
+        <div class="scenario-content">
+          <div class="scenario-detail-row">
+            <strong>Context:</strong>
+            <p>Monsoon flooding displaces 20,000 in low-income urban area. Standing water, poor sanitation.</p>
+          </div>
+          <div class="scenario-detail-row">
+            <strong>Focus:</strong>
+            <p>Inpatient rehydration, infection control, emergency surgery, lab diagnostics, reproductive & mental health.</p>
+          </div>
+          <div class="scenario-detail-row">
+            <strong>Site:</strong>
+            <p>Elevated school grounds (120m × 100m). Partial hard-standing available.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="scenario-detailed-card scenario-c">
+        <div class="scenario-header">
+          <h3>Scenario C: Volcanic Eruption & Mass Displacement (Type 3 – Large)</h3>
+          <span class="hospital-type-badge type-3">Type 3 (100–200+ beds)</span>
+        </div>
+        <div class="scenario-content">
+          <div class="scenario-detail-row">
+            <strong>Context:</strong>
+            <p>Major eruption forces 50,000+ to evacuate. Ashfall disrupts water, power, and health services.</p>
+          </div>
+          <div class="scenario-detail-row">
+            <strong>Focus:</strong>
+            <p>Full surgical suite, ICU, respiratory care, mental health, telemedicine, training, reproductive health.</p>
+          </div>
+          <div class="scenario-detail-row">
+            <strong>Site:</strong>
+            <p>Large evacuation area (150m × 120m). Hybrid construction with permanent structures where available.</p>
+          </div>
+        </div>
+      </div>
     </div>
 
     <!-- SITE PLANNING REQUIREMENTS -->
