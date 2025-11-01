@@ -2,6 +2,10 @@
 
 A professional facilitator guide for emergency field hospital site planning training exercises.
 
+## 🚀 [👉 View Facilitator Guide](Facilitator%20Guide.html)
+
+**Click the link above to view the complete Facilitator Guide in your browser.**
+
 ## Overview
 
 This project contains a comprehensive HTML-based facilitator guide for conducting a 45-minute field hospital site planning exercise. The guide includes:
@@ -53,7 +57,13 @@ To publish this to GitHub:
 
 ## Usage
 
-Simply open `Facilitator Guide.html` in any modern web browser. The document is self-contained with all styles embedded. **Note:** The layout images will only display if the PNG files are in the same directory as the HTML file.
+### Quick View
+- **👉 [Open Facilitator Guide](Facilitator%20Guide.html)** - Click to view the guide directly in your browser
+- The document is self-contained with all styles embedded
+- **Note:** The layout images will only display if the PNG files are in the same directory as the HTML file
+
+### Local Viewing
+Simply open `Facilitator Guide.html` in any modern web browser after downloading/cloning the repository.
 
 ## Browser Support
 
