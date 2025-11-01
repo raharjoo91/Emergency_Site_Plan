@@ -236,6 +236,178 @@
       background: var(--bg-tertiary);
       min-height: 400px;
       padding: var(--spacing-md);
+      cursor: pointer;
+      transition: transform 0.2s ease, opacity 0.2s ease;
+    }
+    
+    .layout-item img:hover {
+      opacity: 0.9;
+      transform: scale(1.02);
+    }
+    
+    /* Modal/Lightbox Styles */
+    .layout-modal {
+      display: none;
+      position: fixed;
+      z-index: 9999;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.95);
+      backdrop-filter: blur(5px);
+      animation: fadeIn 0.3s ease;
+    }
+    
+    .layout-modal.active {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    
+    .modal-content {
+      position: relative;
+      max-width: 95vw;
+      max-height: 95vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: var(--bg-primary);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-xl);
+      padding: var(--spacing-lg);
+      overflow: hidden;
+    }
+    
+    .modal-header {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: var(--spacing-md);
+      padding-bottom: var(--spacing-md);
+      border-bottom: 2px solid var(--border);
+    }
+    
+    .modal-title {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--primary);
+      margin: 0;
+    }
+    
+    .modal-close {
+      background: var(--danger);
+      color: white;
+      border: none;
+      border-radius: var(--radius-md);
+      width: 40px;
+      height: 40px;
+      font-size: 1.5rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s ease, transform 0.2s ease;
+      font-weight: bold;
+    }
+    
+    .modal-close:hover {
+      background: #dc2626;
+      transform: rotate(90deg);
+    }
+    
+    .modal-image-container {
+      position: relative;
+      overflow: auto;
+      max-width: 100%;
+      max-height: 80vh;
+      background: var(--bg-secondary);
+      border-radius: var(--radius-md);
+      padding: var(--spacing-md);
+      border: 2px solid var(--border);
+    }
+    
+    .modal-image {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      transition: transform 0.3s ease;
+      cursor: grab;
+    }
+    
+    .modal-image:active {
+      cursor: grabbing;
+    }
+    
+    .modal-controls {
+      display: flex;
+      gap: var(--spacing-sm);
+      margin-top: var(--spacing-md);
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    
+    .zoom-btn {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+      color: white;
+      border: none;
+      border-radius: var(--radius-md);
+      padding: var(--spacing-sm) var(--spacing-md);
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      box-shadow: var(--shadow-md);
+    }
+    
+    .zoom-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-lg);
+    }
+    
+    .zoom-btn:active {
+      transform: translateY(0);
+    }
+    
+    .zoom-info {
+      background: var(--bg-secondary);
+      color: var(--text);
+      padding: var(--spacing-sm) var(--spacing-md);
+      border-radius: var(--radius-md);
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-xs);
+      border: 1px solid var(--border);
+    }
+    
+    @media (max-width: 768px) {
+      .modal-content {
+        padding: var(--spacing-md);
+        max-width: 100vw;
+        max-height: 100vh;
+        border-radius: 0;
+      }
+      
+      .modal-title {
+        font-size: 1.25rem;
+      }
+      
+      .modal-controls {
+        flex-direction: column;
+      }
+      
+      .zoom-btn {
+        width: 100%;
+      }
     }
     
     .layout-label {
@@ -494,27 +666,49 @@
       <div class="layout-grid">
         <div class="layout-item">
           <div class="layout-label">Layout 1</div>
-          <img src="Layout 1.png" alt="Field Hospital Layout 1 - Emergency Site Planning Reference" loading="lazy">
+          <img src="Layout 1.png" alt="Field Hospital Layout 1 - Emergency Site Planning Reference" loading="lazy" data-layout="Layout 1" onclick="openLayoutModal('Layout 1.png', 'Layout 1')">
         </div>
         <div class="layout-item">
           <div class="layout-label">Layout 2</div>
-          <img src="Layout 2.png" alt="Field Hospital Layout 2 - Emergency Site Planning Reference" loading="lazy">
+          <img src="Layout 2.png" alt="Field Hospital Layout 2 - Emergency Site Planning Reference" loading="lazy" data-layout="Layout 2" onclick="openLayoutModal('Layout 2.png', 'Layout 2')">
         </div>
         <div class="layout-item">
           <div class="layout-label">Layout 3</div>
-          <img src="Layout 3.png" alt="Field Hospital Layout 3 - Emergency Site Planning Reference" loading="lazy">
+          <img src="Layout 3.png" alt="Field Hospital Layout 3 - Emergency Site Planning Reference" loading="lazy" data-layout="Layout 3" onclick="openLayoutModal('Layout 3.png', 'Layout 3')">
         </div>
         <div class="layout-item">
           <div class="layout-label">Layout 4</div>
-          <img src="Layout 4.png" alt="Field Hospital Layout 4 - Emergency Site Planning Reference" loading="lazy">
+          <img src="Layout 4.png" alt="Field Hospital Layout 4 - Emergency Site Planning Reference" loading="lazy" data-layout="Layout 4" onclick="openLayoutModal('Layout 4.png', 'Layout 4')">
         </div>
         <div class="layout-item">
           <div class="layout-label">Layout 5</div>
-          <img src="Layout 5.png" alt="Field Hospital Layout 5 - Emergency Site Planning Reference" loading="lazy">
+          <img src="Layout 5.png" alt="Field Hospital Layout 5 - Emergency Site Planning Reference" loading="lazy" data-layout="Layout 5" onclick="openLayoutModal('Layout 5.png', 'Layout 5')">
         </div>
         <div class="layout-item">
           <div class="layout-label">Layout 6</div>
-          <img src="Layout 6.png" alt="Field Hospital Layout 6 - Emergency Site Planning Reference" loading="lazy">
+          <img src="Layout 6.png" alt="Field Hospital Layout 6 - Emergency Site Planning Reference" loading="lazy" data-layout="Layout 6" onclick="openLayoutModal('Layout 6.png', 'Layout 6')">
+        </div>
+      </div>
+      
+      <!-- Modal/Lightbox -->
+      <div id="layoutModal" class="layout-modal">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h3 class="modal-title" id="modalTitle">Layout</h3>
+            <button class="modal-close" onclick="closeLayoutModal()" aria-label="Close">&times;</button>
+          </div>
+          <div class="modal-image-container" id="modalImageContainer">
+            <img id="modalImage" class="modal-image" src="" alt="" draggable="false">
+          </div>
+          <div class="modal-controls">
+            <button class="zoom-btn" onclick="zoomIn()" title="Zoom In">🔍 Zoom In</button>
+            <button class="zoom-btn" onclick="zoomOut()" title="Zoom Out">🔍 Zoom Out</button>
+            <button class="zoom-btn" onclick="resetZoom()" title="Reset Zoom">↺ Reset</button>
+            <div class="zoom-info">
+              <span>Zoom: </span>
+              <span id="zoomLevel">100%</span>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -525,5 +719,189 @@
       FOR TRAINING USE ONLY</p>
     </div>
   </div>
+  
+  <script>
+    let currentZoom = 100;
+    let isDragging = false;
+    let startX, startY, scrollLeft, scrollTop;
+    
+    function openLayoutModal(imageSrc, layoutName) {
+      const modal = document.getElementById('layoutModal');
+      const modalImage = document.getElementById('modalImage');
+      const modalTitle = document.getElementById('modalTitle');
+      const zoomLevel = document.getElementById('zoomLevel');
+      
+      modalImage.src = imageSrc;
+      modalImage.alt = layoutName;
+      modalTitle.textContent = layoutName;
+      
+      // Reset zoom
+      currentZoom = 100;
+      modalImage.style.transform = `scale(${currentZoom / 100})`;
+      zoomLevel.textContent = `${currentZoom}%`;
+      
+      // Reset scroll position
+      const container = document.getElementById('modalImageContainer');
+      container.scrollLeft = 0;
+      container.scrollTop = 0;
+      
+      // Show modal
+      modal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+      
+      // Enable drag to pan when zoomed
+      enableDragToPan();
+      
+      // Close on ESC key
+      document.addEventListener('keydown', handleEscapeKey);
+    }
+    
+    function closeLayoutModal() {
+      const modal = document.getElementById('layoutModal');
+      modal.classList.remove('active');
+      document.body.style.overflow = '';
+      document.removeEventListener('keydown', handleEscapeKey);
+    }
+    
+    function handleEscapeKey(e) {
+      if (e.key === 'Escape') {
+        closeLayoutModal();
+      }
+    }
+    
+    function zoomIn() {
+      if (currentZoom < 500) {
+        currentZoom += 25;
+        updateZoom();
+      }
+    }
+    
+    function zoomOut() {
+      if (currentZoom > 50) {
+        currentZoom -= 25;
+        updateZoom();
+      }
+    }
+    
+    function resetZoom() {
+      currentZoom = 100;
+      updateZoom();
+      // Reset scroll position
+      const container = document.getElementById('modalImageContainer');
+      container.scrollLeft = container.scrollWidth / 2 - container.clientWidth / 2;
+      container.scrollTop = container.scrollHeight / 2 - container.clientHeight / 2;
+    }
+    
+    function updateZoom() {
+      const modalImage = document.getElementById('modalImage');
+      const zoomLevel = document.getElementById('zoomLevel');
+      
+      modalImage.style.transform = `scale(${currentZoom / 100})`;
+      modalImage.style.transformOrigin = 'center center';
+      zoomLevel.textContent = `${currentZoom}%`;
+    }
+    
+    function enableDragToPan() {
+      const container = document.getElementById('modalImageContainer');
+      const image = document.getElementById('modalImage');
+      
+      container.addEventListener('mousedown', (e) => {
+        if (currentZoom > 100) {
+          isDragging = true;
+          startX = e.pageX - container.offsetLeft;
+          startY = e.pageY - container.offsetTop;
+          scrollLeft = container.scrollLeft;
+          scrollTop = container.scrollTop;
+          container.style.cursor = 'grabbing';
+        }
+      });
+      
+      container.addEventListener('mouseleave', () => {
+        isDragging = false;
+        container.style.cursor = 'default';
+      });
+      
+      container.addEventListener('mouseup', () => {
+        isDragging = false;
+        container.style.cursor = currentZoom > 100 ? 'grab' : 'default';
+      });
+      
+      container.addEventListener('mousemove', (e) => {
+        if (!isDragging) return;
+        e.preventDefault();
+        const x = e.pageX - container.offsetLeft;
+        const y = e.pageY - container.offsetTop;
+        const walkX = (x - startX) * 2;
+        const walkY = (y - startY) * 2;
+        container.scrollLeft = scrollLeft - walkX;
+        container.scrollTop = scrollTop - walkY;
+      });
+      
+      // Touch support for mobile
+      let touchStartX, touchStartY, touchScrollLeft, touchScrollTop;
+      
+      container.addEventListener('touchstart', (e) => {
+        if (currentZoom > 100) {
+          touchStartX = e.touches[0].pageX - container.offsetLeft;
+          touchStartY = e.touches[0].pageY - container.offsetTop;
+          touchScrollLeft = container.scrollLeft;
+          touchScrollTop = container.scrollTop;
+        }
+      });
+      
+      container.addEventListener('touchmove', (e) => {
+        if (currentZoom > 100 && touchStartX !== undefined) {
+          e.preventDefault();
+          const x = e.touches[0].pageX - container.offsetLeft;
+          const y = e.touches[0].pageY - container.offsetTop;
+          const walkX = (x - touchStartX) * 2;
+          const walkY = (y - touchStartY) * 2;
+          container.scrollLeft = touchScrollLeft - walkX;
+          container.scrollTop = touchScrollTop - walkY;
+        }
+      });
+      
+      // Update cursor based on zoom level
+      if (currentZoom > 100) {
+        image.style.cursor = 'grab';
+      }
+    }
+    
+    // Close modal when clicking outside the modal content
+    document.getElementById('layoutModal').addEventListener('click', (e) => {
+      if (e.target.id === 'layoutModal') {
+        closeLayoutModal();
+      }
+    });
+    
+    // Keyboard shortcuts
+    document.addEventListener('keydown', (e) => {
+      const modal = document.getElementById('layoutModal');
+      if (!modal.classList.contains('active')) return;
+      
+      if (e.key === '+' || e.key === '=') {
+        e.preventDefault();
+        zoomIn();
+      } else if (e.key === '-') {
+        e.preventDefault();
+        zoomOut();
+      } else if (e.key === '0') {
+        e.preventDefault();
+        resetZoom();
+      }
+    });
+    
+    // Mouse wheel zoom support
+    document.getElementById('modalImageContainer').addEventListener('wheel', (e) => {
+      if (e.ctrlKey || e.metaKey) {
+        e.preventDefault();
+        if (e.deltaY < 0) {
+          zoomIn();
+        } else {
+          zoomOut();
+        }
+      }
+    }, { passive: false });
+  </script>
 </body>
 </html>
