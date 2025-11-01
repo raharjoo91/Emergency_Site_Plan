@@ -2,9 +2,22 @@
 
 A professional facilitator guide for emergency field hospital site planning training exercises.
 
-## 🚀 [👉 View Facilitator Guide](Facilitator%20Guide.html)
+## 🚀 Quick Access
 
-**Click the link above to view the complete Facilitator Guide in your browser.**
+### Option 1: Direct File Link
+**👉 [View Facilitator Guide](Facilitator%20Guide.html)** - Click to view the guide directly (GitHub will show HTML code; click "Raw" then open in browser)
+
+### Option 2: Enable GitHub Pages (Recommended)
+Enable GitHub Pages to view the guide as a live website:
+
+1. Go to your repository: https://github.com/raharjoo91/Emergency_Site_Plan
+2. Click **Settings** (top menu)
+3. Scroll to **Pages** (left sidebar)
+4. Under **Source**, select **"main" branch**
+5. Click **Save**
+6. Wait 1-2 minutes, then visit: `https://raharjoo91.github.io/Emergency_Site_Plan/`
+
+The guide will load automatically at that URL! 🎉
 
 ## Overview
 
